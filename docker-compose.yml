@@ -2,19 +2,19 @@ version: "3"
 
 services:
   app:
-    build: ./
-    ports:
-      - '8080:80'
+    build:
+      context: .
+      dockerfile: ./docker/go/Dockerfile
     volumes:
-      - ./:/app
-    working_dir: /app
-  db:
-    image: postgres:11.2-alpine
-    volumes:
-      - ./storage/postgres:/var/lib/postgresql/data
-    environment:
-      POSTGRES_USER: app
-      POSTGRES_PASSWORD: secret
-      POSTGRES_DB: app
+      - ./storage/logs:/var/log/app
     ports:
-      - "5432:5432"
+      - '8080:8000'
+
+  # db:
+  #   image: postgres:11.2-alpine
+  #   environment:
+  #     POSTGRES_USER: app
+  #     POSTGRES_PASSWORD: secret
+  #     POSTGRES_DB: app
+  #   ports:
+  #     - "5432:5432"
