@@ -2,4 +2,7 @@ module github.com/bubeha/go-test-rest-api
 
 go 1.14
 
-require ()
+require (
+	github.com/gorilla/mux v1.7.4
+	github.com/sirupsen/logrus v1.6.0
+)
